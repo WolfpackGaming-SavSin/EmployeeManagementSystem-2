@@ -7,6 +7,15 @@ ruby '2.5.3'
 gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
+# Use Semantic UI for Front End
+gem 'semantic-ui-sass'
+gem 'jquery-rails'
+# # Use Devise for user Authentication
+# gem 'devise'
+# # Use Pundit for Authorization
+# gem 'pundit'
+# # gem 'devise_invitable', '~> 1.7.0'
+# gem 'devise-semantified', git: 'https://github.com/ajex13/devise-semantified.git'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
