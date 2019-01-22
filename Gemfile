@@ -11,11 +11,10 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'semantic-ui-sass'
 gem 'jquery-rails'
 # # Use Devise for user Authentication
-# gem 'devise'
+gem 'devise'
 # # Use Pundit for Authorization
 # gem 'pundit'
-# # gem 'devise_invitable', '~> 1.7.0'
-# gem 'devise-semantified', git: 'https://github.com/ajex13/devise-semantified.git'
+gem 'devise-semantified', git: 'https://github.com/ajex13/devise-semantified.git'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -57,6 +56,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'hirb'
 end
 
 group :test do
