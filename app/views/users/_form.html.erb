@@ -10,20 +10,43 @@
     </div>
   </div>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+  <% if current_user.admin? %>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off", placeholder: "Enter new password" %>
-  </div>
+  <% if current_user.admin? || current_user == @user %>
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "off", placeholder: "Enter new password" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "off" ,placeholder: "Confirm new password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "off" ,placeholder: "Confirm new password" %>
+    </div>
+  <% end %>
+
+  <% if current_user.admin? %>
+    <div class="field">
+      <%= f.label :role %>
+      <% if @user.new_record? %>
+        <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+      <% else %>
+        <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}, :selected => @user.role) %>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <div class="ui toggle checkbox">
+        <%= f.check_box :status, class: "hidden" %>
+        <%= f.label "User Status" %>
+      </div>
+    </div>
+
+  <% end %>
 
   <div class="ui buttons">
     <%= link_to 'Go Back', users_path, class: 'ui button' %>
