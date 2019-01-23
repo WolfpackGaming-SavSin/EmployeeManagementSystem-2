@@ -1,57 +1,64 @@
-<%= form_for @user, :html => {class: 'ui form'} do |f| %>
-  <div class="two fields">
-    <div class="field">
-      <%= f.label "First Name" %>
-      <%= f.text_field :first_name, autofocus: true, placeholder: 'Enter first name' %>
-    </div>
-    <div class="field">
-      <%= f.label "Last Name" %>
-      <%= f.text_field :last_name, placeholder: 'Enter last name' %>
-    </div>
-  </div>
+<div class="ui relaxed equal width grid">
+  <div class="ui row">
+    <div class="ui four wide column"></div>
+    <div class="ui eight wide column segment">
+      <%= form_for @user, :html => {class: 'ui form'} do |f| %>
+        <div class="two fields">
+          <div class="field">
+            <%= f.label "First Name" %>
+            <%= f.text_field :first_name, autofocus: true, placeholder: 'Enter first name' %>
+          </div>
+          <div class="field">
+            <%= f.label "Last Name" %>
+            <%= f.text_field :last_name, placeholder: 'Enter last name' %>
+          </div>
+        </div>
 
-  <% if current_user.admin? %>
-    <div class="field">
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-  <% end %>
+        <% if current_user.admin? %>
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+        <% end %>
 
-  <% if current_user.admin? || current_user == @user %>
-    <div class="field">
-      <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: "off", placeholder: "Enter new password" %>
-    </div>
+        <% if current_user.admin? || current_user == @user %>
+          <div class="field">
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Enter new password" %>
+          </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, autocomplete: "off" ,placeholder: "Confirm new password" %>
-    </div>
-  <% end %>
+          <div class="field">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, autocomplete: "off" ,placeholder: "Confirm new password" %>
+          </div>
+        <% end %>
 
-  <% if current_user.admin? %>
-    <div class="field">
-      <%= f.label :role %>
-      <% if @user.new_record? %>
-        <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
-      <% else %>
-        <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}, :selected => @user.role) %>
+        <% if current_user.admin? %>
+          <div class="field">
+            <%= f.label :role %>
+            <% if @user.new_record? %>
+              <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+            <% else %>
+              <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}, :selected => @user.role) %>
+            <% end %>
+          </div>
+
+          <div class="field">
+            <div class="ui toggle checkbox">
+              <%= f.check_box :status, class: "hidden" %>
+              <%= f.label "User Status" %>
+            </div>
+          </div>
+
+        <% end %>
+
+        <div class="ui buttons">
+          <%= link_to 'Go Back', :back, class: 'ui button' %>
+          <div class="or"></div>
+          <%= f.submit "Update" ,class: "ui submit ui positive button" %>
+        </div>
+
       <% end %>
     </div>
-
-    <div class="field">
-      <div class="ui toggle checkbox">
-        <%= f.check_box :status, class: "hidden" %>
-        <%= f.label "User Status" %>
-      </div>
-    </div>
-
-  <% end %>
-
-  <div class="ui buttons">
-    <%= link_to 'Go Back', users_path, class: 'ui button' %>
-    <div class="or"></div>
-    <%= f.submit "Update" ,class: "ui submit ui positive button" %>
   </div>
-
-<% end %>
+</div>
