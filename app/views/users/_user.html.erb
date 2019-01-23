@@ -4,5 +4,8 @@
     <td><%= user.email %></td>
     <td><%= user_role(user) %></td>
     <td><%= user.status ? "Enabled" : "Disabled" %></td>
-    <td><%= link_to "View", user_path(user.id) %></td>
+    <td>
+      <%= link_to "View", user_path(user.id) %>
+      | <%= link_to "Edit", edit_user_path(user.id) %>
+    </td>
 </tr>

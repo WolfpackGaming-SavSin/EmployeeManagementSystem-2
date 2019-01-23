@@ -9,6 +9,8 @@
       <% if !user_signed_in? %>
         <%= link_to "Sign In", new_user_session_path, class: 'item' %>
       <% else %>
+        <%= link_to "Dashboard", admin_path, class: 'item' unless !current_user.admin? %>
+        <%= link_to "Account Settings", edit_user_registration_path, class: 'item' %>
         <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'item' %>
       <% end %>
     </div>
