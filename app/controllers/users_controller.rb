@@ -1,8 +1,16 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_user, only: [:edit, :update, :show, :destroy]
 
   def index
     @users = User.all
+  end
+
+  def show
+  end
+
+  def new
+    @user = User.new
   end
 
   def create
@@ -19,12 +27,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
     if params[:user][:password].blank?
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
-    @user = User.find(params[:id])
 
     respond_to do |format|
       if @user.update_attributes(user_params)
@@ -38,9 +48,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
-
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :ok }
@@ -51,5 +59,9 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:username, :first_name, :last_name, :status, :role, :email, :password, :password_confirmation)
+    end
+    
+    def find_user
+      @user = User.find(params[:id])
     end
 end
