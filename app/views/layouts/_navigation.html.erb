@@ -1,7 +1,12 @@
 <%= link_to "Home", root_path, class: "item" %>
-<a class="item">
-  Messages
-</a>
+<div class="ui dropdown item">
+  Employees <i class="dropdown icon"></i>
+  <div class="menu">
+    <%= link_to "Active Roster", roster_path, class: "item" %>
+    <%= link_to "Inactive Roster", roster_disabled_path, class: "item" %>
+  </div>
+</div>
+
 <div class="right menu">
   <div class="ui dropdown item">
     <%= current_user ? current_user.display_name : "Account" %> <i class="dropdown icon"></i>
@@ -9,7 +14,7 @@
       <% if !user_signed_in? %>
         <%= link_to "Sign In", new_user_session_path, class: 'item' %>
       <% else %>
-        <%= link_to "Dashboard", admin_path, class: 'item' unless !current_user.admin? %>
+        <%= link_to "Dashboard", admin_path, class: 'item' unless User.roles[current_user.role] < User.roles[:manager] %>
         <%= link_to "Account Settings", edit_user_registration_path, class: 'item' %>
         <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'item' %>
       <% end %>

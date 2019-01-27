@@ -19,12 +19,19 @@
 
 $(document).on('turbolinks:load', function() {
     $('.ui.dropdown').dropdown();
+
     $('.ui.menu .item').tab();
+
     $('.ui.checkbox').checkbox();
+
     $('.message .close').on('click', function() {
         $(this).closest('.message').transition('fade');
     });
-    $('.ui.sidebar').sidebar({
-      context: '.bottom.segment'
-    }).sidebar('attach events', '.menu .item');
+
+    $('.ui.sidebar').first().sidebar('attach events', '.toggle.btn');
+    $('.toggle.btn').removeClass('disabled');
+
+    // $('.ui.sidebar').sidebar({
+    //   context: '.bottom.segment'
+    // }).sidebar('attach events', '.menu .item');
 })

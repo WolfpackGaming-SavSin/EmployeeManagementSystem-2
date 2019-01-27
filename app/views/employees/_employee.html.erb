@@ -1,0 +1,12 @@
+<tr>
+    <td><%= employee.first_name.capitalize %></td>
+    <td><%= employee.last_name.capitalize %></td>
+    <td><%= employee.email %></td>
+    <td><%= employee.job_title %></td>
+    <td><%= employee.manager_id ? employee.manager.display_name : "None" %>
+    <td><%= employee.status %></td>
+    <td>
+      <%= link_to "View", employee_path(employee.id) %>
+      | <%= link_to "Edit", edit_employee_path(employee.id) %>
+    </td>
+</tr>

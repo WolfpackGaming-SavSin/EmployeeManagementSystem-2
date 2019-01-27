@@ -1,0 +1,27 @@
+<h2 class="ui center aligned icon header">
+  <i class="circular user blue icon"></i>
+  <%= @employee.display_name %>
+</h2>
+
+<div class="ui top attached tabular menu">
+  <a class="item active" data-tab="info">Info</a>
+  <a class="item" data-tab="locations">Locations</a>
+  <a class="item" data-tab="security">Security</a>
+  <a class="item" data-tab="applications">Applications</a>
+  <a class="item" data-tab="compliance">Compliance</a>
+</div>
+<div class="ui bottom attached tab segment active" data-tab="info">
+  <%= render 'employees/partials/emp_info' %>
+</div>
+<div class="ui bottom attached tab segment" data-tab="locations">
+  Locations
+</div>
+<div class="ui bottom attached tab segment" data-tab="security">
+  Security Info
+</div>
+<div class="ui bottom attached tab segment" data-tab="applications">
+  Application Information
+</div>
+<div class="ui bottom attached tab segment" data-tab="compliance">
+  Compliance Information
+</div>
