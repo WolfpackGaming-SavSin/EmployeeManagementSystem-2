@@ -1,0 +1,16 @@
+<div class="ui top attached menu">
+  <a class="item ui toggle btn">
+    <i class="sidebar icon"></i> Menu
+  </a>
+</div>
+<div class="ui bottom attached segment">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    <%= render 'admin/navigation' %>
+  </div>
+  <div class="pusher">
+    <div class="ui container">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </div>
+  </div>
+</div> 
