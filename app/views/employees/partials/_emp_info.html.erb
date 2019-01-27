@@ -1,0 +1,65 @@
+<%= form_for(@employee, :html => {class: 'ui form', role: 'form'}) do |f| %>
+  <div class="ui horizontal divider">
+    User Data
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label "First Name" %>
+      <%= f.text_field :first_name, readonly: "", placeholder: 'Enter first name'%>
+    </div>
+    <div class="field">
+      <%= f.label "Last Name" %>
+      <%= f.text_field :last_name, readonly: "", placeholder: 'Enter last name'%>
+    </div>
+  </div>
+  <div class="three fields">
+    <div class="field">
+      <%= f.label "Username" %>
+      <%= f.text_field :username, readonly: "", placeholder: 'Enter username'%>
+    </div>
+    <div class="field">
+      <%= f.label "Email" %>
+      <%= f.email_field :email, readonly: "", placeholder: 'Enter email'%>
+    </div>
+    <div class="field">
+      <%= f.label "Job Title" %>
+      <%= f.text_field :job_title, readonly: "", placeholder: 'Enter Job Title'%>
+    </div>
+  </div>
+  <div class="ui horizontal divider">
+    Phones
+  </div>
+  <div class="three fields">
+    <div class="field">
+      <%= f.label "Extension" %>
+      <%= f.number_field :ext, readonly: "", placeholder: 'Enter Extension'%>
+    </div>
+    <div class="field">
+      <%= f.label "Direct Phone" %>
+      <%= f.text_field :direct_phone, readonly: "", placeholder: 'Enter last name'%>
+    </div>
+    <div class="field">
+      <%= f.label "Direct Fax" %>
+      <%= f.text_field :direct_fax, readonly: "", placeholder: 'Enter last name'%>
+    </div>
+  </div>
+  <div class="ui horizontal divider">
+    Aniversary - Birthday
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label "DOB" %>
+      <%= f.date_field :dob, readonly: "" %>
+    </div>
+    <div class="field">
+      <%= f.label "Anniversary" %>
+      <%= f.date_field :anniversary, readonly: "" %>
+    </div>
+  </div>
+  <div class="fields">
+      <div class="ui toggle checkbox">
+          <%= f.check_box :status, readonly: "", class: "hidden" %>
+          <%= f.label "Employee Status" %>
+      </div>
+  </div>
+<% end %>

@@ -11,11 +11,12 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    authorize @user
   end
 
   def create
-    @user = User.new(user_params)
-
+    @user = User.new(permitted_attributes(User))
+    authorize @user
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, :notice => 'User was successfully created.' }
@@ -28,16 +29,18 @@ class UsersController < ApplicationController
   end
 
   def edit
+    authorize @user
   end
 
   def update
+    authorize @user
     if params[:user][:password].blank?
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
 
     respond_to do |format|
-      if @user.update_attributes(user_params)
+      if @user.update_attributes(permitted_attributes(User))
         format.html { redirect_to @user, :notice => 'User was successfully updated.' }
         format.json { head :ok }
       else
@@ -60,7 +63,7 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :first_name, :last_name, :status, :role, :email, :password, :password_confirmation)
     end
-    
+
     def find_user
       @user = User.find(params[:id])
     end
