@@ -1,0 +1,24 @@
+<table class="ui striped selectable celled table">
+    <thead>
+      <tr>
+        <th>Location Name</th>
+        <th>Street Address</th>
+        <th>Suite</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @employee.locations.each do |loc| %>
+        <tr>
+          <td><%= loc.name %></td>
+          <td><%= loc.address %></td>
+          <td><%= loc.suite %></td>
+          <td><%= loc.city %></td>
+          <td><%= loc.state %></td>
+          <td><%= loc.zip_code %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>

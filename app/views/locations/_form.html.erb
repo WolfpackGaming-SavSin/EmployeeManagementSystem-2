@@ -1,0 +1,48 @@
+<%= form_for(@location, :html => {class: 'ui form', role: 'form'}) do |f| %>
+    <h4 class="ui dividing header">Location Information</h4>
+    <div class="field">
+        <%= f.label "Name" %>
+        <div class="field">
+            <%= f.text_field :name, placeholder: 'Enter name of location...'%>
+        </div>
+    </div>
+    <div class="field">
+        <%= f.label "Street Address" %>
+        <div class="fields">
+            <div class="twelve wide field">
+                <%= f.text_field :address, placeholder: 'Enter name of location...'%>
+            </div>
+            <div class="four wide field">
+                <%= f.text_field :suite, placeholder: 'Suite #'%>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <div  class="fields">
+            <div class="eight wide field">
+                <%= f.text_field :city, placeholder: 'Enter City...'%>
+            </div>
+            <div class="two wide field">
+                <%= f.text_field :state, maxlength: 2, placeholder: 'Enter City...'%>
+            </div>
+            <div class="four wide field">
+                <%= f.number_field :zip_code, placeholder: 'Enter Zip Code...'%>
+            </div>
+        </div>
+    </div>
+    <div class="fields">
+        <div class="ui toggle checkbox">
+            <%= f.check_box :status, class: "hidden" %>
+            <%= f.label "Enabled" %>
+        </div>
+    </div>
+    <div class="ui buttons">
+        <% if @location.new_record? %>
+            <%= link_to "Cancel", locations_path, class: "ui button" %>
+        <% else %>
+            <%= link_to "Cancel", location_path(@location), class: "ui button" %>
+        <% end %>
+        <div class="or"></div>
+        <%= f.submit(@location.new_record? ? "Add Location" : "Update Location", class: "ui positive button") %>
+    </div>
+<% end %>

@@ -1,0 +1,30 @@
+<h2 class="ui center aligned icon header">
+  <i class="circular blue building icon"></i>
+  Locations
+</h2>
+
+<div class="ui grid">
+  <div class="eight column row">
+    <div class="right floated column">
+      <%= link_to 'Add Location', new_location_path, class: 'ui button primary' %>
+    </div>
+  </div>
+</div>
+
+<table class="ui striped selectable celled table">
+    <thead>
+        <tr>
+            <th>Location Name</th>
+            <th>Street Address</th>
+            <th>Suite</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th>Status</th>
+            <th>Admin</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= render @locations %>
+    </tbody>
+</table>

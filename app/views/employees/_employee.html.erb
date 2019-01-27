@@ -7,6 +7,8 @@
     <td><%= employee.status %></td>
     <td>
       <%= link_to "View", employee_path(employee.id) %>
+      <% if request.path.start_with?('/admin') %>
       | <%= link_to "Edit", edit_employee_path(employee.id) %>
+      <% end %>
     </td>
 </tr>

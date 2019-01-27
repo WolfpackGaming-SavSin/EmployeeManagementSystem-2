@@ -1,0 +1,53 @@
+<h2 class="ui center aligned icon header">
+  <i class="circular building blue icon"></i>
+  <%= @location.name %>
+</h2>
+
+<%= form_for(@location, :html => {class: 'ui form', role: 'form'}) do |f| %>
+    <h4 class="ui dividing header">Location Information</h4>
+    <div class="field">
+        <%= f.label "Name" %>
+        <div class="field">
+            <%= f.text_field :name, readonly: "", placeholder: 'Enter name of location...'%>
+        </div>
+    </div>
+    <div class="field">
+        <%= f.label "Street Address" %>
+        <div class="fields">
+            <div class="twelve wide field">
+                <%= f.text_field :address, readonly: "", placeholder: 'Enter name of location...'%>
+            </div>
+            <div class="four wide field">
+                <%= f.text_field :suite, readonly: "", placeholder: 'Suite #'%>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <div  class="fields">
+            <div class="eight wide field">
+                <%= f.text_field :city, readonly: "", placeholder: 'Enter City...'%>
+            </div>
+            <div class="two wide field">
+                <%= f.text_field :state, maxlength: 2, readonly: "", placeholder: 'Enter City...'%>
+            </div>
+            <div class="four wide field">
+                <%= f.number_field :zip_code, readonly: "", placeholder: 'Enter Zip Code...'%>
+            </div>
+        </div>
+    </div>
+    <div class="fields">
+        <div class="ui toggle checkbox">
+            <%= f.check_box :status, readonly: "", class: "hidden" %>
+            <%= f.label "Enabled" %>
+        </div>
+    </div>
+<% end %>
+
+
+<div class="ui buttons">
+  <%= link_to "Go Back", locations_path, class: "ui button" %>
+  <% if current_user.admin? %>
+    <div class="or"></div>
+    <%= link_to "Edit", edit_location_path(@location), class: "ui positive button" %>
+  <% end %>
+</div>

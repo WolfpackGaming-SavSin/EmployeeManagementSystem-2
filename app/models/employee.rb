@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
+  has_and_belongs_to_many :locations
 
   belongs_to :manager, :class_name => 'Employee', optional: true
   has_many :subordinate, :class_name => 'Employee', :foreign_key => 'manager_id'
