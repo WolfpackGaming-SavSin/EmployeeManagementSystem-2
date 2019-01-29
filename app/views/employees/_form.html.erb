@@ -69,7 +69,7 @@
     Locations
   </div>
   <div class="fields">
-    <%= f.collection_check_boxes :location_ids, Location.all, :id, :name  do |b| %>
+    <%= f.collection_check_boxes :location_ids, Location.where(status: true), :id, :name  do |b| %>
       <div class="field">
         <div class="ui checkbox">
           <%= b.check_box %> <%= b.label %>
