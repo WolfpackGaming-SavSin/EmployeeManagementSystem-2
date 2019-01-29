@@ -4,12 +4,19 @@
   <div class="row">
     <div class="four wide column">
       <h3 class="ui top attached header">
-        Employees
+        <%= link_to "Employees", employees_path, class: 'item' %>
       </h3>
       <div class="ui attached segment">
         <div class="ui ordered list">
-          <% @employees.each do |employee| %>
-            <%= link_to truncate(employee.display_name, length: 27), employee_path(employee.id), class: 'item' %>
+          <% if @employees.count > 0 %>
+            <% @employees.each do |employee| %>
+              <%= link_to truncate(employee.display_name, length: 27), employee_path(employee.id), class: 'item' %>
+            <% end %>
+          <% else %>
+            <p>
+              There currently no employees. To add one click the "Add Employee" button. <br />
+              <%= link_to 'Add Employee', new_employee_path, class: 'ui button primary' %>
+            </p>
           <% end %>
         </div>
       </div>
@@ -17,12 +24,19 @@
 
     <div class="four wide column">
       <h3 class="ui top attached header">
-        Locations
+        <%= link_to "Locations", locations_path, class: 'item' %>
       </h3>
       <div class="ui attached segment">
         <div class="ui ordered list">
-          <% @locations.each do |location| %>
-            <%= link_to truncate(location.name, length: 27), location_path(location.id), class: 'item' %>
+          <% if @locations.count > 0 %>
+            <% @locations.each do |location| %>
+              <%= link_to truncate(location.name, length: 27), location_path(location.id), class: 'item' %>
+            <% end %>
+          <% else %>
+            <p>
+              There currently no locaitons. To add one click the "Add Location" button. <br />
+              <%= link_to 'Add Location', new_location_path, class: 'ui button primary' %>
+            </p>
           <% end %>
         </div>
       </div>
@@ -30,12 +44,19 @@
 
     <div class="four wide column">
       <h3 class="ui top attached header">
-        Security Types
+        <%= link_to "Security Types", securities_path, class: 'item' %>
       </h3>
       <div class="ui attached segment">
         <div class="ui ordered list">
-          <% @securities.each do |security| %>
-            <%= link_to truncate(security.name, length: 27), security_path(security.id), class: 'item' %>
+          <% if @securities.count > 0 %>
+            <% @securities.each do |security| %>
+              <%= link_to truncate(security.name, length: 27), security_path(security.id), class: 'item' %>
+            <% end %>
+          <% else %>
+            <p>
+              There currently no security types. To add one click the "Add Security Type" button. <br />
+              <%= link_to 'Add Security', new_security_path, class: 'ui button primary' %>
+            </p>
           <% end %>
         </div>
       </div>
@@ -43,12 +64,19 @@
 
     <div class="four wide column">
       <h3 class="ui top attached header">
-        Programs
+        <%= link_to "Programs", programs_path, class: 'item' %>
       </h3>
       <div class="ui attached segment">
         <div class="ui ordered list">
-          <% @employees.each do |employee| %>
-            <%= link_to truncate(employee.display_name, length: 27), employee_path(employee.id), class: 'item' %>
+          <% if @programs.count > 0 %>
+            <% @programs.each do |program| %>
+              <%= link_to truncate(program.name, length: 27), program_path(program.id), class: 'item' %>
+            <% end %>
+          <% else %>
+            <p>
+              There are currently no Programs. <br />
+              <%= link_to 'Add Application', new_program_path, class: 'ui button primary' %>
+            </p>
           <% end %>
         </div>
       </div>
@@ -57,12 +85,19 @@
   <div class="row">
     <div class="four wide column">
       <h3 class="ui top attached header">
-        Users
+        <%= link_to "Users", users_path, class: 'item' %>
       </h3>
       <div class="ui attached segment">
         <div class="ui ordered list">
-          <% @users.each do |user| %>
-            <%= link_to truncate(user.display_name, length: 27), user_path(user.id), class: 'item' %>
+          <% if @users.count > 0 %>
+            <% @users.each do |user| %>
+              <%= link_to truncate(user.display_name, length: 27), user_path(user.id), class: 'item' %>
+            <% end %>
+          <% else %>
+            <p>
+              There are currently no Users. <br />
+              <%= link_to 'Add User', new_user_path, class: 'ui button primary' %>
+            </p>
           <% end %>
         </div>
       </div>

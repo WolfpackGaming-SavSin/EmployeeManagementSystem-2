@@ -4,7 +4,7 @@
     <td><%= employee.email %></td>
     <td><%= employee.job_title %></td>
     <td><%= employee.manager_id ? employee.manager.display_name : "None" %>
-    <td><%= employee.status %></td>
+    <td><%= employee.status ? "Enabled" : "Disabled %></td>
     <td>
       <%= link_to "View", employee_path(employee.id) %>
       <% if request.path.start_with?('/admin') %>

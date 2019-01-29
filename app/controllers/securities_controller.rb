@@ -14,7 +14,7 @@ class SecuritiesController < ApplicationController
     end
 
     def create
-        @security = Security.new(security_params)
+        @security = Security.new(permitted_attributes(Security))
         authorize @security
         if @security.save
             flash[:success] = "Security added successfully"
@@ -30,7 +30,7 @@ class SecuritiesController < ApplicationController
 
     def update
         authorize @security
-        if @security.update(security_params)
+        if @security.update(permitted_attributes(@security))
             flash[:success] = "Security updated successfully"
             redirect_to security_path(@security)
         else
@@ -50,10 +50,6 @@ class SecuritiesController < ApplicationController
     end
 
     private
-        def security_params
-            params.require(:security).permit(:name, :description)
-        end
-
         def find_security
             @security = Security.find(params[:id])
         end

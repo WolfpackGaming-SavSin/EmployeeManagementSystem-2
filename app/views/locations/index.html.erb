@@ -3,32 +3,44 @@
   Locations
 </h2>
 
-<div class="ui grid">
-  <div class="eight column row">
-    <div class="right floated column">
-      <%= link_to 'Add Location', new_location_path, class: 'ui button primary' %>
+<% if Location.count > 0 %>
+  <div class="ui grid">
+    <div class="eight column row">
+      <div class="right floated column">
+        <%= link_to 'Add Location', new_location_path, class: 'ui button primary' %>
+      </div>
     </div>
   </div>
-</div>
 
-<table class="ui striped selectable celled table">
-    <thead>
-        <tr>
-            <th>Location Name</th>
-            <th>Street Address</th>
-            <th>Suite</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Zip Code</th>
-            <th>Status</th>
-            <th>Admin</th>
-        </tr>
-    </thead>
-    <tbody>
-        <%= render @locations %>
-    </tbody>
-</table>
+  <table class="ui striped selectable celled table">
+      <thead>
+          <tr>
+              <th>Location Name</th>
+              <th>Street Address</th>
+              <th>Suite</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Zip Code</th>
+              <th>Status</th>
+              <th>Admin</th>
+          </tr>
+      </thead>
+      <tbody>
+          <%= render @locations %>
+      </tbody>
+  </table>
 
-<div align="center">
-    <%= will_paginate @locations %>
-</div>
+  <div align="center">
+      <%= will_paginate @locations %>
+  </div>
+<% else %>
+  <h3 class="ui top attached header">
+    No Locations
+  </h3>
+  <div class="ui attached segment">
+    <p>
+      There currently no locaitons. To add one click the "Add Location" button. <br />
+      <%= link_to 'Add Location', new_location_path, class: 'ui button primary' %>
+    </p>
+  </div>
+<% end %>

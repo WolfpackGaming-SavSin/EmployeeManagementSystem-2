@@ -3,7 +3,22 @@
   <%= @security.name.capitalize %>
 </h2>
 
-<%= render 'formro' %>
+<%= form_for(@security, :html => {class: 'ui form', role: 'form'}) do |f| %>
+  <h4 class="ui dividing header">Security Information</h4>
+  <div class="field">
+    <%= f.label "Name" %>
+    <div class="field">
+        <%= f.text_field :name, readonly: "", placeholder: 'Enter name of the security type...'%>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label "Description" %>
+    <div class="field">
+        <%= f.text_field :description, readonly: "", placeholder: 'Enter a description for the security type...'%>
+    </div>
+  </div>
+<% end %>
+
 <br />
 <div class="ui buttons">
   <%= link_to "Go Back", securities_path, class: "ui button" %>

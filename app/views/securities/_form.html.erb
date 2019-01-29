@@ -12,6 +12,13 @@
         <%= f.text_field :description, placeholder: 'Enter a description for the security type...'%>
     </div>
   </div>
+
+  <div class="fields">
+      <div class="ui toggle checkbox">
+          <%= f.check_box :status, class: "hidden" %>
+          <%= f.label "Enabled" %>
+      </div>
+  </div>
   <div class="ui buttons">
     <% if @security.new_record? %>
         <%= link_to "Cancel", securities_path, class: "ui button" %>
