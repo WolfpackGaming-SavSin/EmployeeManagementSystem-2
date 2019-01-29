@@ -1,6 +1,7 @@
 <tr>
     <td><%= security.name %></td>
-    <td><%= security.description %></td>
+    <td><%= truncate(security.description, length: 27) %></td>
+    <td><%= security.status ? "Enabled" : "Disabled" %></td>
     <td>
         <%= link_to "View", security_path(security.id) %>
         <% if current_user.admin? %>

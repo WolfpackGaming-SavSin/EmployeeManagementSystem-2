@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :employees
     resources :locations
     resources :securities
+    resources :programs
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'pages#index'

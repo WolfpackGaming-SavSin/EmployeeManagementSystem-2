@@ -1,0 +1,31 @@
+<%= form_for(@program, :html => {class: 'ui form', role: 'form'}) do |f| %>
+    <h4 class="ui dividing header">Application Information</h4>
+    <div class="field">
+        <%= f.label "Name" %>
+        <div class="field">
+            <%= f.text_field :name, placeholder: 'Enter name of the application...'%>
+        </div>
+    </div>
+    <div class="field">
+        <%= f.label "Description" %>
+        <div class="field">
+            <%= f.text_field :description, placeholder: 'Enter a description of the application'%>
+        </div>
+    </div>
+
+    <div class="fields">
+        <div class="ui toggle checkbox">
+            <%= f.check_box :status, class: "hidden" %>
+            <%= f.label "Enabled" %>
+        </div>
+    </div>
+    <div class="ui buttons">
+        <% if @program.new_record? %>
+            <%= link_to "Cancel", programs_path, class: "ui button" %>
+        <% else %>
+            <%= link_to "Cancel", program_path(@program), class: "ui button" %>
+        <% end %>
+        <div class="or"></div>
+        <%= f.submit(@program.new_record? ? "Add Application" : "Update Application", class: "ui positive button") %>
+    </div>
+<% end %>

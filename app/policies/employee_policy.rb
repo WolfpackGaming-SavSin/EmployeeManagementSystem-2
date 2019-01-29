@@ -28,7 +28,7 @@ class EmployeePolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:first_name, :last_name, :username, :email, :ext, :direct_phone, :direct_fax, :dob, :job_title, :anniversary, :status, :manager_id, location_ids: [], security_ids: []]
+    [:first_name, :last_name, :username, :email, :ext, :direct_phone, :direct_fax, :dob, :job_title, :anniversary, :status, :manager_id, location_ids: [], security_ids: [], program_ids: []]
   end
 
   class Scope < Scope

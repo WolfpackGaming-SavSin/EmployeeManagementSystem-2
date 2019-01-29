@@ -1,0 +1,12 @@
+<tr>
+    <td><%= program.name %></td>
+    <td><%= truncate(program.description, length: 27) %></td>
+    <td><%= program.status ? "Enabled" : "Disabled" %></td>
+    <td>
+        <%= link_to "View", program_path(program.id) %>
+        <% if current_user.admin? %>
+            |
+            <%= link_to "Delete", program_path(program.id), method: :delete, data: { confirm: "Are you sure you want to delte this application?"} %>
+        <% end %>
+    </td>
+</tr>
