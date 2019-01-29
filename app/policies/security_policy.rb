@@ -1,4 +1,8 @@
 class SecurityPolicy < ApplicationPolicy
+  def index?
+    user.admin? or user.manager?
+  end
+
   def show?
     user.admin? or user.manager?
   end

@@ -4,7 +4,7 @@ class SecuritiesController < ApplicationController
     before_action :find_security, only: [:edit, :update, :show, :destroy]
 
     def index
-        @securities = Security.all #.paginate(page: params[:page], per_page: 10)
+        @securities = Security.paginate(page: params[:page], per_page: 10)
         authorize Security
     end
 

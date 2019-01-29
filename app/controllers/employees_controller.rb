@@ -5,7 +5,7 @@ class EmployeesController < ApplicationController
   before_action :find_employee, only: [:edit, :update, :show, :destroy]
 
   def index
-    @employees = Employee.all #.paginate(page: params[:page], per_page: 10)
+    @employees = Employee.paginate(page: params[:page], per_page: 10)
     authorize Employee
   end
 

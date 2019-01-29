@@ -15,6 +15,8 @@ gem 'devise'
 # Use Pundit for Authorization
 gem 'pundit'
 gem 'devise-semantified', git: 'https://github.com/ajex13/devise-semantified.git'
+# Use Will Paginate for pagination
+gem 'will_paginate', '~> 3.1.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
