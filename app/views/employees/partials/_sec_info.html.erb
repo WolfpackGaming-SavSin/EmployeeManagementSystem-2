@@ -1,0 +1,16 @@
+<table class="ui striped selectable celled table">
+    <thead>
+      <tr>
+        <th>Security Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @employee.securities.each do |sec| %>
+        <tr>
+          <td><%= sec.name %></td>
+          <td><%= sec.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>

@@ -4,7 +4,8 @@ class LocationsController < ApplicationController
   before_action :find_location, only: [:edit, :update, :show, :destroy]
 
   def index
-    @locations = Location.all
+    @locations = Location.all #.paginate(page: params[:page], per_page: 10)
+    authorize Location
   end
 
   def new
@@ -38,6 +39,7 @@ class LocationsController < ApplicationController
   end
 
   def show
+    authorize @location
   end
 
   def destroy

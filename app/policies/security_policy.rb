@@ -1,4 +1,4 @@
-class LocationPolicy < ApplicationPolicy
+class SecurityPolicy < ApplicationPolicy
   def show?
     user.admin? or user.manager?
   end
@@ -8,11 +8,17 @@ class LocationPolicy < ApplicationPolicy
   end
 
   def update?
-    user.manager? or user.admin?
+   user.admin?
+  end
+
+  def destroy?
+    user.admin?
   end
 
   def permitted_attributes
-    [:name, :address, :suite, :city, :state, :zip_code, :status]
+    if user.admin?
+      [:name, :description, :status]
+    end
   end
 
   class Scope < Scope

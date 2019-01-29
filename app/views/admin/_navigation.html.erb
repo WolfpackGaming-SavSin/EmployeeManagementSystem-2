@@ -3,24 +3,46 @@
   Home
 <% end %>
 
-<%= link_to admin_path, class: 'item' do %>
-  <i class="clipboard icon"></i>
-  Dashboard
+<% if policy(:dashboard).show? %>
+  <%= link_to admin_path, class: 'item' do %>
+    <i class="clipboard icon"></i>
+    Dashboard
+  <% end %>
 <% end %>
 
-<%= link_to users_path, class: 'item' do %>
-  <i class="user icon"></i>
-  Users
+<% if policy(:user).show? %>
+  <%= link_to users_path, class: 'item' do %>
+    <i class="user icon"></i>
+    Users
+  <% end %>
 <% end %>
 
-<%= link_to employees_path, class: 'item' do %>
-  <i class="users icon"></i>
-  Employees
+<% if policy(:employee).show? %>
+  <%= link_to employees_path, class: 'item' do %>
+    <i class="users icon"></i>
+    Employees
+  <% end %>
 <% end %>
 
-<%= link_to locations_path, class: 'item' do %>
-  <i class="building icon"></i>
-  Locations
+<% if policy(:location).show? %>
+  <%= link_to locations_path, class: 'item' do %>
+    <i class="building icon"></i>
+    Locations
+  <% end %>
+<% end %>
+
+<% if policy(:security).show? %>
+  <%= link_to securities_path, class: 'item' do %>
+    <i class="lock icon"></i>
+    Securities
+  <% end %>
+<% end %>
+
+<% if policy(:location).show? %>
+  <%= link_to locations_path, class: 'item' do %>
+    <i class="building icon"></i>
+    Programs
+  <% end %>
 <% end %>
 
 <%= link_to destroy_user_session_path, method: :delete, class: 'item' do %>

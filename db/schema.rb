@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_27_045006) do
+ActiveRecord::Schema.define(version: 2019_01_29_023642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_01_27_045006) do
     t.string "direct_fax"
     t.date "dob"
     t.date "anniversary"
-    t.boolean "status"
+    t.boolean "status", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "manager_id"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(version: 2019_01_27_045006) do
     t.index ["location_id", "employee_id"], name: "index_employees_locations_on_location_id_and_employee_id"
   end
 
+  create_table "employees_securities", id: false, force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.bigint "security_id", null: false
+    t.index ["employee_id", "security_id"], name: "index_employees_securities_on_employee_id_and_security_id"
+    t.index ["security_id", "employee_id"], name: "index_employees_securities_on_security_id_and_employee_id"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "name", null: false
     t.string "address", null: false
@@ -47,7 +54,15 @@ ActiveRecord::Schema.define(version: 2019_01_27_045006) do
     t.string "city", null: false
     t.string "state", null: false
     t.string "zip_code", null: false
-    t.boolean "status"
+    t.boolean "status", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "securities", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.boolean "status", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

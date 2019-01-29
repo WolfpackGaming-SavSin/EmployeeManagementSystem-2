@@ -1,5 +1,9 @@
 class UserPolicy < ApplicationPolicy
 
+  def show?
+    user.admin? or user.manager?
+  end
+
   def create?
     user.admin?
   end
