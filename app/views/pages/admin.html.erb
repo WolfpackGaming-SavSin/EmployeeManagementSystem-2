@@ -1,1 +1,110 @@
-Admin Dashboard
+<h3>Admin Dashboard</h3>
+
+<div class="ui grid">
+  <div class="row">
+    <div class="four wide column">
+      <h3 class="ui top attached header">
+        Employees
+      </h3>
+      <div class="ui attached segment">
+        <div class="ui ordered list">
+          <% @employees.each do |employee| %>
+            <%= link_to truncate(employee.display_name, length: 27), employee_path(employee.id), class: 'item' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="four wide column">
+      <h3 class="ui top attached header">
+        Locations
+      </h3>
+      <div class="ui attached segment">
+        <div class="ui ordered list">
+          <% @locations.each do |location| %>
+            <%= link_to truncate(location.name, length: 27), location_path(location.id), class: 'item' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="four wide column">
+      <h3 class="ui top attached header">
+        Security Types
+      </h3>
+      <div class="ui attached segment">
+        <div class="ui ordered list">
+          <% @securities.each do |security| %>
+            <%= link_to truncate(security.name, length: 27), security_path(security.id), class: 'item' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="four wide column">
+      <h3 class="ui top attached header">
+        Programs
+      </h3>
+      <div class="ui attached segment">
+        <div class="ui ordered list">
+          <% @employees.each do |employee| %>
+            <%= link_to truncate(employee.display_name, length: 27), employee_path(employee.id), class: 'item' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="four wide column">
+      <h3 class="ui top attached header">
+        Users
+      </h3>
+      <div class="ui attached segment">
+        <div class="ui ordered list">
+          <% @users.each do |user| %>
+            <%= link_to truncate(user.display_name, length: 27), user_path(user.id), class: 'item' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="four wide column">
+      <h3 class="ui top attached header">
+        Reports
+      </h3>
+      <div class="ui attached segment">
+        <div class="ui ordered list">
+          <% @employees.each do |employee| %>
+            <%= link_to truncate(employee.display_name, length: 27), employee_path(employee.id), class: 'item' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="four wide column">
+      <h3 class="ui top attached header">
+        Posts
+      </h3>
+      <div class="ui attached segment">
+        <div class="ui ordered list">
+          <% @employees.each do |employee| %>
+            <%= link_to truncate(employee.display_name, length: 27), employee_path(employee.id), class: 'item' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="four wide column">
+      <h3 class="ui top attached header">
+        Something
+      </h3>
+      <div class="ui attached segment">
+        <div class="ui ordered list">
+          <% @employees.each do |employee| %>
+            <%= link_to truncate(employee.display_name, length: 27), employee_path(employee.id), class: 'item' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
