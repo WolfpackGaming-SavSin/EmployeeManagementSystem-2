@@ -1,4 +1,12 @@
 class EmployeePolicy < ApplicationPolicy
+  def index?
+    user.admin? or user.manager?
+  end
+
+  def show?
+    user.admin? or user.manager?
+  end
+
   def create?
     user.admin?
   end
@@ -20,7 +28,7 @@ class EmployeePolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:first_name, :last_name, :username, :email, :ext, :direct_phone, :direct_fax, :dob, :job_title, :anniversary, :status, :manager_id, location_ids: []]
+    [:first_name, :last_name, :username, :email, :ext, :direct_phone, :direct_fax, :dob, :job_title, :anniversary, :status, :manager_id, location_ids: [], security_ids: []]
   end
 
   class Scope < Scope

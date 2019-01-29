@@ -1,0 +1,29 @@
+<h2 class="ui center aligned icon header">
+    <i class="circular blue lock icon"></i>
+    Security Types
+</h2>
+
+<div class="ui grid">
+  <div class="eight column row">
+    <div class="right floated column">
+      <%= link_to 'Add Security', new_security_path, class: 'ui button primary' %>
+    </div>
+  </div>
+</div>
+
+<table class="ui striped selectable celled table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Admin</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= render @securities %>
+    </tbody>
+</table>
+
+<div align="center">
+    <%= will_paginate @securities %>
+</div>

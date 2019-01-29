@@ -5,20 +5,22 @@ class EmployeesController < ApplicationController
   before_action :find_employee, only: [:edit, :update, :show, :destroy]
 
   def index
-    @employees = Employee.all
+    @employees = Employee.paginate(page: params[:page], per_page: 10)
+    authorize Employee
   end
 
   def roster
     authorize Employee
-    @employees = Employee.where(status: true)
+    @employees = Employee.where(status: true) #.paginate(page: params[:page], per_page: 10)
   end
 
   def disabled
     authorize Employee
-    @employees = Employee.where(status: false)
+    @employees = Employee.where(status: false) #.paginate(page: params[:page], per_page: 10)
   end
 
   def show
+    authorize @employee
   end
 
   def new

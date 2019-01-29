@@ -14,14 +14,24 @@
   <%= render 'employees/partials/emp_info' %>
 </div>
 <div class="ui bottom attached tab segment" data-tab="locations">
+  <h2> Current Locations </h2>
   <%= render 'employees/partials/loc_info' %>
 </div>
 <div class="ui bottom attached tab segment" data-tab="security">
-  Security Info
+  <h2> Current Security Access </h2>
+  <%= render 'employees/partials/sec_info' %>
 </div>
 <div class="ui bottom attached tab segment" data-tab="applications">
   Application Information
 </div>
 <div class="ui bottom attached tab segment" data-tab="compliance">
   Compliance Information
+</div>
+
+<div class="ui buttons">
+  <%= link_to "Go Back", root_path, class: "ui button" %>
+  <% if policy(:employee).edit? %>
+    <div class="or"></div>
+    <%= link_to "Edit", edit_employee_path(@employee), class: "ui positive button" %>
+  <% end %>
 </div>

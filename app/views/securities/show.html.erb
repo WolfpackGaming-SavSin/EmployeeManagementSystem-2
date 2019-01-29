@@ -1,0 +1,14 @@
+<h2 class="ui center aligned icon header">
+  <i class="circular lock blue icon"></i>
+  <%= @security.name.capitalize %>
+</h2>
+
+<%= render 'formro' %>
+<br />
+<div class="ui buttons">
+  <%= link_to "Go Back", securities_path, class: "ui button" %>
+  <% if current_user.admin? %>
+    <div class="or"></div>
+    <%= link_to "Edit", edit_security_path(@security), class: "ui positive button" %>
+  <% end %>
+</div>

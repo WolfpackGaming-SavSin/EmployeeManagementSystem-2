@@ -1,0 +1,11 @@
+<tr>
+    <td><%= security.name %></td>
+    <td><%= security.description %></td>
+    <td>
+        <%= link_to "View", security_path(security.id) %>
+        <% if current_user.admin? %>
+            |
+            <%= link_to "Delete", security_path(security.id), method: :delete, data: { confirm: "Are you sure you want to delte this security type?"} %>
+        <% end %>
+    </td>
+</tr>
